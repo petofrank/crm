@@ -43,8 +43,11 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes(): void
     {
         foreach ($this->centralDomains() as $domain) {
-            Route::middleware('web')
-                ->domain($domain)
+            Route::middleware([
+                    'web',
+                    InitializeTenancyByDomain::class,
+                    PreventAccessFromCentralDomains::class,
+            ])->domain($domain)
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         }
