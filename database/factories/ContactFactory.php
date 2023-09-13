@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Enums\Pronouns;
 use App\Models\Contact;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends Factory<Contact>
@@ -25,6 +27,7 @@ class ContactFactory extends Factory
             'preferred_name' => $this->faker->userName(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
+            'pronouns' => Arr::random(Pronouns::cases())
         ];
     }
 }

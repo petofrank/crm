@@ -17,9 +17,9 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request): Response
     {
-//        $contacts = QueryBuilder::for(Contact::class)
-//            ->paginate();
-//
-//        return new JsonResponse($contacts, 200);
+        $contacts = QueryBuilder::for(Contact::class)
+            ->paginate();
+
+        return new JsonResponse($contacts, 200);
     }
 }

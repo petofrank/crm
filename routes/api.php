@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Contacts\IndexController;
+use App\Http\Controllers\Api\Contacts\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,9 @@ Route::middleware('auth:sanctum')->group( function () {
 
 });
 
-
+Route::prefix('tests')->as('tests:')->group(function() {
+    Route::get('/', TestController::class)->name('index');;
+});
 
 Route::get('ping', function() {
     return response()->json(
