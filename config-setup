@@ -1,0 +1,12 @@
+
+# GIT
+git config --global core.autocrlf false
+
+# DB
+php artisan tenants:migrate-fresh
+make migrate-fresh
+
+mariadb -u root -pcrm
+
+GRANT ALL PRIVILEGES ON *.* TO 'crm'@'%';
+FLUSH PRIVILEGES;
