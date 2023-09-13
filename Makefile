@@ -18,6 +18,9 @@ coverage:
 migrate:
 	@docker exec $(PROJECT_NAME)_php php artisan migrate
 
+migrate-fresh:
+	@docker exec $(PROJECT_NAME)_php php artisan migrate:fresh
+
 seed:
 	@docker exec $(PROJECT_NAME)_php php artisan db:seed
 

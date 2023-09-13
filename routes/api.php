@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Contacts\IndexController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('contacts')->as('contacts:')->group(function() {
+    Route::get('/', IndexController::class)->name('index');;
+});
+
+Route::middleware('auth:sanctum')->group( function () {
+
+});
+
+
 
 Route::get('ping', function() {
     return response()->json(

@@ -31,6 +31,10 @@ use Stancl\Tenancy\Database\TenantCollection;
  * @method static Builder|Tenant whereData($value)
  * @method static Builder|Tenant whereId($value)
  * @method static Builder|Tenant whereUpdatedAt($value)
+ * @method static TenantCollection<int, static> all($columns = ['*'])
+ * @method static TenantCollection<int, static> get($columns = ['*'])
+ * @method static TenantCollection<int, static> all($columns = ['*'])
+ * @method static TenantCollection<int, static> get($columns = ['*'])
  * @mixin Eloquent
  */
 class Tenant extends BaseTenant implements TenantWithDatabase

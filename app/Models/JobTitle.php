@@ -4,9 +4,20 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Database\Factories\JobTitleFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\JobTitle
+ *
+ * @method static JobTitleFactory factory($count = null, $state = [])
+ * @method static Builder|JobTitle newModelQuery()
+ * @method static Builder|JobTitle newQuery()
+ * @method static Builder|JobTitle query()
+ * @mixin \Eloquent
+ */
 class JobTitle extends Model
 {
     use HasFactory;

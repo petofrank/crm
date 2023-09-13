@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('preferred_name')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
-            $table->string('pronouns');
+            $table->string('pronouns')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
