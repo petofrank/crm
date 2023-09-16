@@ -15,7 +15,7 @@ class ContactFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array<string, string>
      */
     public function definition(): array
     {

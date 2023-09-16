@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Database\Factories\CompanyFactory;
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static Builder|Company query()
  * @method static Builder|Company withTrashed()
  * @method static Builder|Company withoutTrashed()
- * @mixin \Eloquent
+ * @mixin Eloquent
  */
 class Company extends Model
 {

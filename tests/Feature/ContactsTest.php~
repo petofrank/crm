@@ -12,7 +12,7 @@ use function Pest\Laravel\getJson;
 uses(TestCase::class, RefreshDatabase::class)->in('Feature');
 
 beforeEach(function () {
-    tenancy()->initialize(Tenant::find('api.crm.localhost'));
+//    tenancy()->initialize(Tenant::find('api.crm.localhost'));
 });
 
 it('it can retieve a list of contact for user', function () {

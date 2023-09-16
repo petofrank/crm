@@ -21,11 +21,15 @@ migrate:
 migrate-fresh:
 	@docker exec $(PROJECT_NAME)_php php artisan migrate:fresh
 
+migrate-all:
+	@docker exec $(PROJECT_NAME)_php php artisan migrate:fresh
+	@docker exec $(PROJECT_NAME)_php php artisan tenants:migrate-fresh
+
 seed:
 	@docker exec $(PROJECT_NAME)_php php artisan db:seed
 
-fresh:
-	@docker exec crm_php php artisan migrate:fresh
+create-tenant:
+	@docker exec $(PROJECT_NAME)_php php artisan tenant:create
 
 analyse:
 	@docker exec $(PROJECT_NAME)_php ./vendor/bin/phpstan analyse

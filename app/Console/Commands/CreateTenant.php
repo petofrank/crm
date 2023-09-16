@@ -7,14 +7,14 @@ use Illuminate\Console\Command;
 use Stancl\Tenancy\Database\Models\Domain;
 use Str;
 
-class test extends Command
+class createTenant extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:test';
+    protected $signature = 'tenant:create';
 
     /**
      * The console command description.

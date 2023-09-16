@@ -28,6 +28,18 @@ Route::middleware([
         return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
     });
 
-    Route::get('/test', TestController::class)->name('test');
+    Route::get('/createTenant', TestController::class)->name('createTenant');
+
 });
+
+//Route::middleware([
+//    'api',
+//    InitializeTenancyByDomain::class,
+//    PreventAccessFromCentralDomains::class,
+//])->group(function () {
+//    Route::prefix('tests')->as('tests:')->group(function() {
+//        Route::get('/', TestController::class)->name('index');;
+//    });
+//
+//});
 

@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Models\Concerns\HasUuid;
 use Database\Factories\ContactFactory;
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static Builder|Contact query()
  * @method static Builder|Contact withTrashed()
  * @method static Builder|Contact withoutTrashed()
- * @mixin \Eloquent
+ * @mixin Eloquent
  */
 class Contact extends Model
 {

@@ -22,7 +22,6 @@ class ContactResource extends JsonApiResource
                 ],
             'phone' => $this->phone,
             'email' => $this->email,
-            'pronouns' => $this->pronouns,
         ];
     }
 

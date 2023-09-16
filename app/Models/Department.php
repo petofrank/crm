@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Database\Factories\DepartmentFactory;
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static Builder|Department query()
  * @method static Builder|Department withTrashed()
  * @method static Builder|Department withoutTrashed()
- * @mixin \Eloquent
+ * @mixin Eloquent
  */
 class Department extends Model
 {
