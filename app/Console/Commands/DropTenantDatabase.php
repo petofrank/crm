@@ -4,16 +4,15 @@ namespace App\Console\Commands;
 
 use App\Models\Tenant;
 use Illuminate\Console\Command;
-use Str;
 
-class createTenant extends Command
+class DropTenantDatabase extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'tenant:create';
+    protected $signature = 'tenant:drop';
 
     /**
      * The console command description.
@@ -27,7 +26,9 @@ class createTenant extends Command
      */
     public function handle(): void
     {
-        $tenant2 = Tenant::create(['id' => 'api.crm.localhost']);
-        $tenant2->domains()->create(['domain' => 'api.crm.localhost']);
+        foreach (Tenant::all() as $tenant) {
+            $tenant->domains()->delete();
+            $tenant->delete();
+        }
     }
 }

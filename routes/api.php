@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Contacts\IndexController;
+use App\Http\Controllers\Api\Contacts\StoreController;
 use App\Http\Controllers\Api\Contacts\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,20 +21,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('contacts')->as('contacts:')->group(function() {
-    Route::get('/', IndexController::class)->name('index');;
-});
-
 Route::middleware('auth:sanctum')->group( function () {
 
+    Route::prefix('contacts')->as('contacts:')->group(function() {
+        Route::get('/', IndexController::class)->name('index');;
+        Route::post('/store', StoreController::class)->name('store');;
+    });
+
+
+    Route::prefix('tests')->as('tests:')->group(function() {
+        Route::get('/', TestController::class)->name('index');;
+    });
+
+    Route::get('ping', function() {
+        return response()->json(
+            data: ['ack' => 'pong'],status: 200
+        );
+    });
 });
 
-Route::prefix('tests')->as('tests:')->group(function() {
-    Route::get('/', TestController::class)->name('index');;
-});
-
-Route::get('ping', function() {
-    return response()->json(
-        data: ['ack' => 'pong'],status: 200
-    );
-});
