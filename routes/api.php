@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Contacts\IndexController;
+use App\Http\Controllers\Api\Contacts\ShowController;
 use App\Http\Controllers\Api\Contacts\StoreController;
 use App\Http\Controllers\Api\Contacts\TestController;
 use Illuminate\Http\Request;
@@ -25,7 +26,8 @@ Route::middleware('auth:sanctum')->group( function () {
 
     Route::prefix('contacts')->as('contacts:')->group(function() {
         Route::get('/', IndexController::class)->name('index');;
-        Route::post('/store', StoreController::class)->name('store');;
+        Route::post('/store', StoreController::class)->name('store');
+        Route::get('{uuid}', ShowController::class)->name('show');
     });
 
 

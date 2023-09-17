@@ -22,8 +22,12 @@ class StoreController extends Controller
         ));
 
         return new JsonResponse(
-            new ContactResource(resource:$contact),
-            201
+            data: new ContactResource(
+                resource: CreateNewContact::handle(
+                    object: ContactFactory::make(attributes: $request->validated()
+                ))
+            ),
+            status: 201
         );
     }
 }

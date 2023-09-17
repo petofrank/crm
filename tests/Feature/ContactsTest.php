@@ -5,30 +5,38 @@ declare(strict_types=1);
 use App\Enums\Pronouns;
 use App\Models\Contact;
 use App\Models\Tenant;
+use Database\Factories\ContactFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\TestCase;
 use function Pest\Laravel\getJson;
 use function Pest\Laravel\postJson;
 
-uses(TestCase::class, RefreshDatabase::class)->in('Feature');
-
-//beforeAll(function () {
-//;
-//    Artisan::call('tenant:create');
-//    Artisan::call('tenants:migrate-fresh');
-//});
+//uses(RefreshDatabase::class);
 
 beforeEach(function () {
     tenancy()->initialize(Tenant::find('api.crm.localhost'));
 });
 
-it('it get an unauthorized response when not logged in on index route', function () {
+it('receives an 401 on index when not logged in', function () {
     getJson(
         route('api:tests:index'))
         ->assertStatus( 401);
 });
+
+
+it('can retrieve a contact by UUID', function () {
+    auth()->loginUsingId((new Database\Factories\UserFactory)->create()->id);
+    $contact = ContactFactory::new()->create();
+
+    getJson(
+        route('api:contacts:show', $contact->uuid))
+        ->assertStatus( 200)->assertJson(fn (AssertableJson $json) =>
+            $json->where('attributes.name.first', $contact->first_name)
+                ->where('type', 'contact')
+                ->etc()
+    );
+})->with('strings');
 
 
 it('it can retieve a list of contact for user', function () {

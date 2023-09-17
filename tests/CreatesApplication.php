@@ -27,7 +27,7 @@ trait CreatesApplication
     {
         $files = glob(database_path() .'/tenant.*', GLOB_BRACE);
         foreach($files as $file) {
-            unlink($file);
+            @unlink($file);
         }
 
         file_put_contents(database_path('database.sqlite'), '');
